@@ -53,10 +53,7 @@
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
 				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-				//float AreaEffectY = 1 - cos(v.uv.x);
-				//o.vertex.y += sin(worldPos.x + _Time.w * _Frequency) * _WindStrenght * clamp(AreaEffectY,0,1);
-				//float AreaEffectX = 1 - cos(v.uv.x);
-				//o.vertex.x += sin(worldPos.y + _Time.w * _Frequency) * _WindStrenght * clamp(AreaEffectX,0,1);
+
 				float posLock = step(_Threshold, v.uv.x);
 				float pos = _Xwind * worldPos.x + _Ywind * worldPos.y;
 				o.vertex.x += sin(pos * _Loop + _Time.w * _Frequency) * _WindStrenght * posLock;

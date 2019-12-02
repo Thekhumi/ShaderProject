@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Flag
+  m_Name: Flag 2
   m_Shader: {fileID: 4800000, guid: de500fbc540ce6340b21825bf25c9197, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -75,12 +75,8 @@ Material:
     - _Threshold: 0.1
     - _UVSec: 0
     - _WindStrenght: 0.3
-    - _XMaxMove: 1
-    - _XMinMove: 0
     - _Xwind: 0.5
-    - _YMaxMove: 1
-    - _YMinMove: 0
-    - _Ywind: -0.5
+    - _Ywind: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

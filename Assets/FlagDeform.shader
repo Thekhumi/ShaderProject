@@ -4,7 +4,11 @@
     {
         _MainTex ("Texture", 2D) = "white" {}
 		_Frequency("Frequency", Float) = 1.0
-		_WindStrenght("Wind Strenght", Float) = 1.0
+		_WindStrenght("Wind Strenght (0.1 - 1)", Float) = 0.5
+		_Loop("Loop Multiplier", Float) = 1.0
+		_Threshold("X Threshold (0 - 1)", Float) = 0.2
+		_Xwind("X Wind Influence", Float) = 1.0
+		_Ywind("Y Wind Influence", Float) = 0
     }
     SubShader
     {
@@ -38,8 +42,10 @@
             float4 _MainTex_ST;
 			float _Frequency;
 			float _WindStrenght;
-
-
+			float _Loop;
+			float _Threshold;
+			float _Xwind;
+			float _Ywind;
 
             v2f vert (appdata v)
             {
@@ -47,10 +53,13 @@
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
 				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-				float AreaEffectY = 1 - cos(v.uv.x);
-				o.vertex.y += sin(worldPos.x + _Time.w * _Frequency) * _WindStrenght * clamp(AreaEffectY,0,1);
-				float AreaEffectX = 1 - cos(v.uv.x);
-				o.vertex.x += sin(worldPos.y + _Time.w * _Frequency) * _WindStrenght * clamp(AreaEffectX,0,1);
+				//float AreaEffectY = 1 - cos(v.uv.x);
+				//o.vertex.y += sin(worldPos.x + _Time.w * _Frequency) * _WindStrenght * clamp(AreaEffectY,0,1);
+				//float AreaEffectX = 1 - cos(v.uv.x);
+				//o.vertex.x += sin(worldPos.y + _Time.w * _Frequency) * _WindStrenght * clamp(AreaEffectX,0,1);
+				float posLock = step(_Threshold, v.uv.x);
+				float pos = _Xwind * worldPos.x + _Ywind * worldPos.y;
+				o.vertex.x += sin(pos * _Loop + _Time.w * _Frequency) * _WindStrenght * posLock;
 
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);

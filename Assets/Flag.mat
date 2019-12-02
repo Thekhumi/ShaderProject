@@ -64,6 +64,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Loop: 3
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -71,12 +72,15 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Threshold: 0.15
     - _UVSec: 0
-    - _WindStrenght: 1.2
+    - _WindStrenght: 0.5
     - _XMaxMove: 1
     - _XMinMove: 0
+    - _Xwind: 0.5
     - _YMaxMove: 1
     - _YMinMove: 0
+    - _Ywind: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
